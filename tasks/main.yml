@@ -1,2 +1,63 @@
 ---
-# tasks file for ansible-role-kubernetes
+- name: assert kubernetes_node_type
+  assert:
+    that:
+      - kubernetes_node_type in kubernetes_supported_node_type
+
+- name: ensure ca-certificates installed
+  become: yes
+  apt:
+    name: ca-certificates
+    state: present
+
+- name: ensure apt-transport-https installed
+  become: yes
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: add kubernetes key
+  become: yes
+  apt_key:
+    id: '{{ kubernetes_apt_key_id }}'
+    url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg'
+    state: present
+
+- name: add kubernetes repo
+  become: yes
+  apt_repository:
+    repo: 'deb http://apt.kubernetes.io/ kubernetes-xenial main'
+    state: present
+
+- name: install kubernetes (worker)
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - kubelet
+    - kubernetes-cni
+  when: kubernetes_node_type == 'worker'
+
+- name: install kubernetes (master)
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - kubelet
+    - kubectl
+    - kubernetes-cni
+  when: kubernetes_node_type == 'master'
+
+- name: install kubernetes (admin)
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - kubelet
+    - kubectl
+    - kubeadm
+    - kubernetes-cni
+  when: kubernetes_node_type == 'admin'

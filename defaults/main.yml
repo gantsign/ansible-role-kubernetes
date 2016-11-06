@@ -1,2 +1,18 @@
 ---
-# defaults file for ansible-role-kubernetes
+# Node type: determines what features are installed.
+# - worker:
+#     - kubelet
+#     - kubernetes-cni
+# - master:
+#     - kubelet
+#     - kubectl
+#     - kubernetes-cni
+# - admin:
+#     - kubelet
+#     - kubectl
+#     - kubeadm
+#     - kubernetes-cni
+kubernetes_node_type: worker
+
+# The ID of the APT key for the Kubernetes repository
+kubernetes_apt_key_id: 3746C208A7317B0F
