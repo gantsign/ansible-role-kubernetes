@@ -44,7 +44,7 @@ are shown below):
 kubernetes_node_type: worker
 
 # The ID of the APT key for the Kubernetes repository
-kubernetes_apt_key_id: 3746C208A7317B0F
+kubernetes_apt_key_id: 6A030B21BA07F4FB
 ```
 
 Example Playbook
