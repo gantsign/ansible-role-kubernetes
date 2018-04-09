@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  remote_user: root
+- name: Converge
+  hosts: all
   roles:
     - role: ansible-role-kubernetes
       # Can't test admin/development as kubeadm requires systemd to install
