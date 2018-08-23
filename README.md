@@ -60,6 +60,59 @@ Example Playbook
       kubernetes_node_type: worker
 ```
 
+Tab Completion & Aliases for Zsh
+--------------------------------
+
+### Using Ansible
+
+We recommended using the
+[gantsign.antigen](https://galaxy.ansible.com/gantsign/antigen) role to enable
+Zsh support for Kubernetes (this must be configured for each user).
+
+```yaml
+- hosts: servers
+  roles:
+    - role: gantsign.kubernetes
+      kubernetes_node_type: worker
+
+    - role: gantsign.antigen
+      users:
+        - username: example
+          antigen_libraries:
+            - name: oh-my-zsh
+          antigen_bundles:
+            # Use the Oh My Zsh plugin for kubectl
+            - name: kubectl
+            # Use the GantSign plugin for kubeadm
+            - name: kubeadm
+              url: gantsign/zsh-plugins
+              location: kubeadm
+```
+
+### Using Antigen
+
+If you prefer to use [Antigen](https://github.com/zsh-users/antigen) directly
+add the following to your Antigen configuration:
+
+```bash
+antigen use oh-my-zsh
+antigen bundle kubectl
+antigen bundle gantsign/zsh-plugins kubeadm
+```
+
+**Important:** there's a [bug](https://github.com/zsh-users/antigen/issues/583)
+with the current version of Antigen that prevents it working with the `kubectl`
+plugin. We recommend using version `2.0.2` of Antigen until the issue is fixed.
+
+### Manual configuration
+
+To manually configure Zsh tab completion add the following to your `.zshrc`:
+
+```bash
+eval "$(kubectl completion zsh)"
+eval "$(kubeadm completion zsh)"
+```
+
 More Roles From GantSign
 ------------------------
 
