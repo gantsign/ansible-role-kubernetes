@@ -1,0 +1,12 @@
+---
+- name: install kubernetes (admin)
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - kubelet
+    - kubectl
+    - kubeadm
+    - kubernetes-cni
+  when: kubernetes_node_type == 'admin'
