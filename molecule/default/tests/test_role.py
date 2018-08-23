@@ -11,6 +11,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     'kubelet --version',
     'kubectl version --client=true'
 ])
-def test_java_tools(Command, command):
-    cmd = Command('. /etc/profile && ' + command)
+def test_java_tools(host, command):
+    cmd = host.run('. /etc/profile && ' + command)
     assert cmd.rc == 0
