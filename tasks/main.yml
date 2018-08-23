@@ -4,12 +4,6 @@
     that:
       - kubernetes_node_type in kubernetes_supported_node_type
 
-- name: ensure ca-certificates installed
-  become: yes
-  apt:
-    name: ca-certificates
-    state: present
-
 - name: ensure apt-transport-https installed
   become: yes
   apt:
