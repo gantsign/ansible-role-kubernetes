@@ -1,0 +1,6 @@
+---
+- name: install kubernetes (controller)
+  become: yes
+  apt:
+    name: kubectl
+    state: present
