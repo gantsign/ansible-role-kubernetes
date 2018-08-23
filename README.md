@@ -30,6 +30,8 @@ are shown below):
 
 ```yaml
 # Node type: determines what features are installed.
+# - controller:
+#     - kubectl
 # - worker:
 #     - kubelet
 #     - kubernetes-cni

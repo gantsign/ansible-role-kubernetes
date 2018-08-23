@@ -9,21 +9,21 @@ lint:
   name: yamllint
 
 platforms:
-  - name: ansible-role-kubernetes-master-ubuntu-max
+  - name: ansible-role-kubernetes-controller-ubuntu-max
     image: ubuntu:18.04
 
 provisioner:
   name: ansible
   playbooks:
-    converge: ../default/playbook.yml
+    converge: ../controller/playbook.yml
   lint:
     name: ansible-lint
 
 scenario:
-  name: master-ubuntu-max
+  name: controller-ubuntu-min
 
 verifier:
   name: testinfra
-  directory: ../default/tests
+  directory: ../controller/tests
   lint:
     name: flake8

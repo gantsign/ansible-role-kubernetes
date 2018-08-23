@@ -1,6 +1,7 @@
 ---
 # Supported node types
 kubernetes_supported_node_type:
+  - controller
   - worker
   - master
   - admin

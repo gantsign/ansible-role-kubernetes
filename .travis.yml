@@ -8,16 +8,16 @@ matrix:
   include:
     - env:
         - ANSIBLE_VERSION=2.4.6
-        - MOLECULE_SCENARIO=master-ubuntu-min
+        - MOLECULE_SCENARIO=controller-ubuntu-min
     - env:
         - ANSIBLE_VERSION=2.4.6
         - MOLECULE_SCENARIO=master-ubuntu-max
     - env:
         - ANSIBLE_VERSION=2.6.2
-        - MOLECULE_SCENARIO=master-ubuntu-min
+        - MOLECULE_SCENARIO=controller-ubuntu-max
     - env:
         - ANSIBLE_VERSION=2.6.2
-        - MOLECULE_SCENARIO=master-ubuntu-max
+        - MOLECULE_SCENARIO=master-ubuntu-min
 
 # Require the standard build environment
 sudo: required
