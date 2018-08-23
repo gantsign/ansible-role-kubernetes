@@ -12,4 +12,5 @@ galaxy_info:
   galaxy_tags:
     - kubernetes
     - docker
+    - development
 dependencies: []
