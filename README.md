@@ -20,6 +20,7 @@ Requirements
         * Ubuntu
 
             * Xenial (16.04)
+            * Bionic (18.04)
 
 Role Variables
 --------------

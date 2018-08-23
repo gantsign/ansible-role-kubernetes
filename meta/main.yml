@@ -9,6 +9,7 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - xenial
+        - bionic
   galaxy_tags:
     - kubectl
     - kubeadm
