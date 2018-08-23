@@ -11,6 +11,7 @@ galaxy_info:
         - xenial
   galaxy_tags:
     - kubernetes
+    - k8s
     - docker
     - development
     - web
