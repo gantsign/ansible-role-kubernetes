@@ -17,10 +17,10 @@ matrix:
         - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=master-ubuntu-max
     - env:
-        - MOLECULEW_ANSIBLE=2.6.2
+        - MOLECULEW_ANSIBLE=2.7.0
         - MOLECULE_SCENARIO=controller-ubuntu-max
     - env:
-        - MOLECULEW_ANSIBLE=2.6.2
+        - MOLECULEW_ANSIBLE=2.7.0
         - MOLECULE_SCENARIO=master-ubuntu-min
 
 # Require the standard build environment
