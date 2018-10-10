@@ -2,9 +2,8 @@
 - name: install kubernetes (master)
   become: yes
   apt:
-    name: '{{ item }}'
+    name:
+      - kubelet
+      - kubectl
+      - kubernetes-cni
     state: present
-  with_items:
-    - kubelet
-    - kubectl
-    - kubernetes-cni
