@@ -2,8 +2,7 @@
 - name: install kubernetes (worker)
   become: yes
   apt:
-    name: '{{ item }}'
+    name:
+      - kubelet
+      - kubernetes-cni
     state: present
-  with_items:
-    - kubelet
-    - kubernetes-cni
