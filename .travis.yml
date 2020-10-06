@@ -11,10 +11,10 @@ env:
 jobs:
   include:
     - env:
-        - MOLECULEW_ANSIBLE=2.7.15
+        - MOLECULEW_ANSIBLE=2.8.16
         - MOLECULE_SCENARIO=controller-ubuntu-min
     - env:
-        - MOLECULEW_ANSIBLE=2.7.15
+        - MOLECULEW_ANSIBLE=2.8.16
         - MOLECULE_SCENARIO=master-ubuntu-max
     - env:
         - MOLECULEW_ANSIBLE=2.9.1
