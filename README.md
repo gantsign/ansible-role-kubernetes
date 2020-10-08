@@ -1,7 +1,7 @@
 Ansible Role: Kubernetes
 ========================
 
-[![Build Status](https://travis-ci.org/gantsign/ansible-role-kubernetes.svg?branch=master)](https://travis-ci.org/gantsign/ansible-role-kubernetes)
+[![Build Status](https://travis-ci.com/gantsign/ansible-role-kubernetes.svg?branch=master)](https://travis-ci.com/gantsign/ansible-role-kubernetes)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gantsign.kubernetes-blue.svg)](https://galaxy.ansible.com/gantsign/kubernetes)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gantsign/ansible-role-kubernetes/master/LICENSE)
 
