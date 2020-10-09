@@ -5,8 +5,11 @@ dependency:
 driver:
   name: docker
 
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 
 platforms:
   - name: ansible-role-kubernetes-controller-ubuntu-max
@@ -16,15 +19,8 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    converge: ../controller/playbook.yml
-  lint:
-    name: ansible-lint
-
-scenario:
-  name: controller-ubuntu-max
+    converge: ../controller/converge.yml
 
 verifier:
   name: testinfra
   directory: ../controller/tests
-  lint:
-    name: flake8
