@@ -4,10 +4,12 @@
     that:
       - kubernetes_node_type in kubernetes_supported_node_type
 
-- name: ensure apt-transport-https installed
+- name: install dependencies
   become: yes
   apt:
-    name: apt-transport-https
+    name:
+      - apt-transport-https
+      - gnupg2
     state: present
 
 - name: add kubernetes key

@@ -1,6 +1,13 @@
 ---
 - name: Converge
   hosts: all
+
+  pre_tasks:
+    - name: update apt cache
+      apt:
+        update_cache: yes
+      changed_when: no
+
   roles:
     - role: ansible-role-kubernetes
       kubernetes_node_type: controller
