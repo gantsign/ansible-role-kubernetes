@@ -46,8 +46,8 @@ are shown below):
 #     - kubernetes-cni
 kubernetes_node_type: worker
 
-# The ID of the APT key for the Kubernetes repository
-kubernetes_apt_key_id: 6A030B21BA07F4FB
+# The ID of the APT key for the Kubernetes repository (optional)
+kubernetes_apt_key_id:
 ```
 
 Example Playbook
