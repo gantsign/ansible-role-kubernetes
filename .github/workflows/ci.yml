@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         ansible-version:
-          - '2.8.16'
+          - '2.9.26' # min-ansible-test-version
         molecule-scenario:
           - controller-ubuntu-min
           - master-ubuntu-max
