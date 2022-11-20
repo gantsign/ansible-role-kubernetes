@@ -12,17 +12,27 @@
       - gnupg2
     state: present
 
+- name: Create APT keyrings dir
+  become: yes
+  file:
+    path: '/etc/apt/keyrings'
+    state: directory
+    mode: 'u=rwx,go=rx'
+
 - name: add kubernetes key
   become: yes
-  apt_key:
-    id: '{{ kubernetes_apt_key_id }}'
+  get_url:
     url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg'
-    state: present
+    dest: '/etc/apt/keyrings/cloud.google.gpg'
+    mode: 'u=rw,go=r'
+    force: yes
 
 - name: add kubernetes repo
   become: yes
   apt_repository:
-    repo: 'deb http://apt.kubernetes.io/ kubernetes-xenial main'
+    repo: >-
+      deb [signed-by=/etc/apt/keyrings/cloud.google.gpg]
+      http://apt.kubernetes.io/ kubernetes-xenial main
     state: present
 
 - include_tasks: '{{ kubernetes_node_type }}.yml'
