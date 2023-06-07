@@ -1,46 +1,48 @@
+# code: language=ansible
 ---
-- name: assert kubernetes_node_type
-  assert:
+- name: Assert kubernetes_node_type
+  ansible.builtin.assert:
     that:
       - kubernetes_node_type in kubernetes_supported_node_type
 
-- name: install dependencies
-  become: yes
-  apt:
+- name: Install dependencies
+  become: true
+  ansible.builtin.apt:
     name:
       - apt-transport-https
       - gnupg2
     state: present
 
 - name: Create APT keyrings dir
-  become: yes
-  file:
+  become: true
+  ansible.builtin.file:
     path: '/etc/apt/keyrings'
     state: directory
     mode: 'u=rwx,go=rx'
 
-- name: add kubernetes key
-  become: yes
-  get_url:
+- name: Add kubernetes key
+  become: true
+  ansible.builtin.get_url:
     url: 'https://dl.k8s.io/apt/doc/apt-key.gpg'
     dest: '/etc/apt/keyrings/kubernetes-archive-keyring.gpg'
     mode: 'u=rw,go=r'
-    force: yes
+    force: true
 
-- name: remove old kubernetes repo
-  become: yes
-  apt_repository:
+- name: Remove old kubernetes repo
+  become: true
+  ansible.builtin.apt_repository:
     repo: >-
       deb [signed-by=/etc/apt/keyrings/cloud.google.gpg]
       http://apt.kubernetes.io/ kubernetes-xenial main
     state: absent
 
-- name: add kubernetes repo
-  become: yes
-  apt_repository:
+- name: Add kubernetes repo
+  become: true
+  ansible.builtin.apt_repository:
     repo: >-
       deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg]
       http://apt.kubernetes.io/ kubernetes-xenial main
     state: present
 
-- include_tasks: '{{ kubernetes_node_type }}.yml'
+- name: Include tasks for node type {{ kubernetes_node_type }}
+  ansible.builtin.include_tasks: '{{ kubernetes_node_type }}.yml'

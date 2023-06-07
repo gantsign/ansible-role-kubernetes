@@ -1,7 +1,8 @@
+# code: language=ansible
 ---
-- name: install kubernetes (admin)
-  become: yes
-  apt:
+- name: Install kubernetes (admin)
+  become: true
+  ansible.builtin.apt:
     name:
       - kubelet
       - kubectl
